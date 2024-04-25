@@ -31,16 +31,16 @@ class GFG {
 // User function Template for Java
 
 class Solution {
-    int findMaxSum(int n, int m, int mat[][]){
-   int R = mat.length, C = mat[0].length, res = -1;
-        
-        for (int i = 0, cur = 0; i <= R - 3; i++, cur = 0) {
-            for (int j = 0; j <= C - 3; j++) {
-                cur = mat[i][j] + mat[i][j + 1] + mat[i][j + 2] + mat[i + 1][j + 1] + mat[i + 2][j] + mat[i + 2][j + 1] + mat[i + 2][j + 2];
-                res = Math.max(res, cur);
+    int findMaxSum(int n, int m, int mat[][]) {
+ if(n<3 || m<3) return -1;
+        int ans=0;
+        for(int i=1;i<n-1;i++){
+            for(int j=1;j<m-1;j++){
+                int sum=mat[i][j]+mat[i+1][j]+mat[i-1][j]+
+                mat[i-1][j-1]+mat[i+1][j+1]+mat[i-1][j+1]+mat[i+1][j-1];
+                ans=Math.max(sum,ans);
             }
         }
-        
-        return res;
+        return ans;
     }
 };
